@@ -23,8 +23,12 @@ const handleGet = async (_req: NextApiRequest, res: NextApiResponse) => {
     const response = await ghostAPI.get('/posts/');
     const posts = response.data.posts;
     return res.status(200).json(posts);
-  } catch (error: any) {
-    console.error('[GET /api/posts] Error:', error);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('[GET /api/posts] Error:', error.message);
+    } else {
+      console.error('[GET /api/posts] Error desconhecido:', error);
+    }
     return res.status(500).json({ error: 'Erro ao buscar posts' });
   }
 };
@@ -43,8 +47,12 @@ const handlePost = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const createdPost = response.data.posts?.[0];
     return res.status(201).json(createdPost);
-  } catch (error: any) {
-    console.error('[POST /api/posts] Error:', error);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('[POST /api/posts] Error:', error.message);
+    } else {
+      console.error('[POST /api/posts] Error desconhecido:', error);
+    }
     return res.status(500).json({ error: 'Erro ao criar post' });
   }
 };
