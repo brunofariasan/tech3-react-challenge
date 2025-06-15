@@ -1,4 +1,4 @@
-import { Container, PostCard } from './styles';
+import { Container, PostCard } from '@/styles/styled';
 import { useRouter } from 'next/router';
 import { usePosts } from '@/hooks/usePosts';
 import Text from '@/components/micro/Text';

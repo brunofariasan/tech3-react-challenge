@@ -1,9 +1,9 @@
+import { PageContainer } from '@/styles/styled';
 import Head from 'next/head';
 import PostForm from '@/components/PostForm';
 import BreadcrumbNav from '@/components/micro/Breadcrumb';
 import Text from '@/components/micro/Text';
 import { usePostActions } from '@/hooks/usePostActions';
-import { PageContainer } from './styles';
 
 export default function CreatePostPage() {
   const { handleCreate } = usePostActions();
