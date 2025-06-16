@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container, PostCard } from '@/styles/styled';
 import { useRouter } from 'next/router';
 import { usePosts } from '@/hooks/usePosts';
