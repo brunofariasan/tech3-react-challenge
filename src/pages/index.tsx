@@ -7,11 +7,17 @@ import Button from '@/components/micro/Button';
 import PostListSkeleton from '@/components/micro/PostListSkeleton';
 import Spinner from '@/components/micro/Spinner';
 import { capitalize } from '@/utils/stringUtils';
-import EmptyState from '@/components/micro/EmptyState/indesx';
+import EmptyState from '@/components/micro/EmptyState';
+import DeleteConfirmationModal from '@/components/micro/DeleteConfirmationModal';
+import { useState } from 'react';
+import { MESSAGES } from '@/constants/messages';
+import { BUTTONS } from '@/constants/buttons';
 
 export default function Home() {
   const router = useRouter();
   const { posts, loading, loadingDelete, handleDelete } = usePosts();
+  const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <Container>
@@ -47,7 +53,8 @@ export default function Home() {
                     color="red"
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleDelete(post.id);
+                      setSelectedPostId(post.id);
+                      setShowModal(true);
                     }}
                   >
                     🗑️
@@ -64,9 +71,22 @@ export default function Home() {
           width="105px"
           onClick={() => router.push('/create')}
         >
-          + Criar Post
+          {BUTTONS.ADD}
         </Button>
       </Flex>
+      <DeleteConfirmationModal
+        isOpen={showModal}
+        onClose={() => {
+          setShowModal(false);
+          setSelectedPostId(null);
+        }}
+        onConfirm={() => {
+          if (selectedPostId) handleDelete(selectedPostId);
+          setShowModal(false);
+          setSelectedPostId(null);
+        }}
+         message={MESSAGES.DELETE_CONFIRMATION}
+      />
     </Container>
   );
 }
