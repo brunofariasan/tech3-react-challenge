@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { TextProps } from './types';
 
-
 const textVariants = {
   'text-icon': css`
     font-size: 1.5rem;
@@ -66,7 +65,7 @@ const textVariants = {
     color: white;
   `,
 
- 'title': css`
+  'title': css`
     font-family: Montserrat;
     font-size: 2.5rem;
     font-style: normal;
@@ -75,6 +74,17 @@ const textVariants = {
     width: 100%;
     word-break: break-word;
     color: white;
+  `,
+  
+  'title-delete': css`
+    font-family: inter;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.5rem;
+    letter-spacing: 0.2px;
+    font-size: 2rem;
+    max-width: 41rem;
+    color: ${({ theme }) => theme.colors.deepCharcoalBlue};
   `,
 };
 

@@ -6,6 +6,7 @@ import Flex from '@/components/micro/Flex';
 import Button from '@/components/micro/Button';
 import { capitalize } from '@/utils/stringUtils';
 import BreadcrumbNav from '@/components/micro/Breadcrumb';
+import { BUTTONS } from '@/constants/buttons';
 
 export default function PostDetail() {
   const { post, loading, router } = usePostDetail();
@@ -33,7 +34,7 @@ export default function PostDetail() {
             </Text>
             <Flex gap="10px" justify="right">
               <Button width="100px" height="40px" onClick={() => router.push(`/edit/${post.id}`)}>
-                Editar
+                {BUTTONS.EDIT}
               </Button>
             </Flex>
           </Flex>

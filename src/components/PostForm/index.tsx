@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { Post } from '../../types/post';
 import Spinner from '../micro/Spinner';
 import Button from '../micro/Button';
+import { BUTTONS } from '@/constants/buttons';
 
 type Props = {
   initialData?: Post;
@@ -36,7 +37,7 @@ export default function PostForm({ initialData, onSubmit }: Props) {
         <S.FormContainer>
           <S.TopRightButtonContainer>
             <Button backgroundColor="green" color="white" height="40px" onClick={handleSubmit}>
-              Salvar
+              {BUTTONS.SAVE}
             </Button>
           </S.TopRightButtonContainer>
 
