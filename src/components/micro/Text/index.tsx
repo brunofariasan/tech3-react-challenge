@@ -5,12 +5,9 @@ import { TextProps } from './types';
 const Text = ({
   variant = 'text-icon',
   richText = false,
-  color,
   text,
-  dynamicHeader,
   component = 'p',
   link,
-  headerColor,
   children,
   ...rest
 }: TextProps) => {
@@ -18,7 +15,6 @@ const Text = ({
     return (
       <LinkTextContainer href={link}>
         <TextContainer
-          color={!dynamicHeader ? color : headerColor}
           variant={variant}
           component={component}
           {...rest}
@@ -30,7 +26,6 @@ const Text = ({
   }
   return (
     <TextContainer
-      color={!dynamicHeader ? color : headerColor}
       variant={variant}
       component={component}
       {...rest}

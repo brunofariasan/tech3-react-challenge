@@ -1,6 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import ghostAPI from '@/lib/ghost';
 
+interface AxiosErrorLike extends Error {
+  response?: {
+    data?: unknown;
+  };
+}
+
 const fetchPostById = async (id: string) => {
   const res = await ghostAPI.get(`/posts/${id}/?formats=html`);
   return res.data.posts?.[0];
@@ -54,13 +60,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(405).end(`Method ${req.method} Not Allowed`);
       }
     }
-  } catch (err: any) {
-    console.error('Erro:', JSON.stringify(err.response?.data || err, null, 2));
-    return res.status(500).json({
-      error: {
-        message: err.message,
-        details: err.response?.data || null,
-      },
-    });
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      const axiosErr = err as AxiosErrorLike;
+      console.error('Erro:', JSON.stringify(axiosErr.response?.data || err.message, null, 2));
+      return res.status(500).json({
+        error: {
+          message: err.message,
+          details: axiosErr.response?.data || null,
+        },
+      });
+    } else {
+      console.error('Erro desconhecido:', err);
+      return res.status(500).json({
+        error: {
+          message: 'Erro desconhecido',
+          details: null,
+        },
+      });
+    }
   }
 }
