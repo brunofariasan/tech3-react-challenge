@@ -1,3 +1,4 @@
+import React from 'react';
 import { PageContainer } from '@/styles/styled';
 import Head from 'next/head';
 import PostForm from '@/components/PostForm';

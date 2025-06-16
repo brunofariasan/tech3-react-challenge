@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container } from './styled';
 import { usePostDetail } from '@/hooks/usePostDetail';
 import Text from '@/components/micro/Text';

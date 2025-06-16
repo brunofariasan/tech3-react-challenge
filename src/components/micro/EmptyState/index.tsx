@@ -1,3 +1,4 @@
+import React from 'react';
 import { MESSAGES } from '@/constants/messages';
 import Text from '../Text';
 import * as S from './styled';

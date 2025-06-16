@@ -5,7 +5,10 @@ const shimmer = keyframes`
   100% { background-position: 1000px 0; }
 `;
 
-export const SkeletonCard = styled.div`
+
+export const SkeletonCard = styled.div.attrs({
+  'data-testid': 'skeleton-card',
+} as React.HTMLAttributes<HTMLDivElement>)`
   background: #f6f7f8;
   background-image: linear-gradient(to right, #f6f7f8 0%, #e0e0e0 20%, #f6f7f8 40%, #f6f7f8 100%);
   background-repeat: no-repeat;

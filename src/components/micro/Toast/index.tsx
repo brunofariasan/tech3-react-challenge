@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { Container, ToastBox } from './styled';
 import Text from '../Text';
