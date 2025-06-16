@@ -1,10 +1,11 @@
+import { MESSAGES } from '@/constants/messages';
 import Text from '../Text';
 import * as S from './styled';
 type EmptyStateProps = {
   message?: string;
 };
 
-export default function EmptyState({ message = 'Nenhum post para exibir.' }: EmptyStateProps) {
+export default function EmptyState({ message = MESSAGES.EMPTY_STATE }: EmptyStateProps) {
   return (
     <S.Container>
       <S.Icon />

@@ -9,7 +9,7 @@ type TextVariants =
   | "text-status"
   | "details-post"
   | "title"
-
+  | "title-delete"
 type TextComponent =
   | "span"
   | "p"

@@ -1,4 +1,3 @@
-// pages/api/posts/index.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import ghostAPI from '@/lib/ghost';
 

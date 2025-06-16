@@ -12,6 +12,7 @@ export const theme = {
     black: '#000',
     red: '#ff5959',
     green: '#28a745',
+    blue: '#2563eb',
   },
   font: {
     family: {
