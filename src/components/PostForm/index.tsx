@@ -1,3 +1,4 @@
+import React from 'react';
 import * as S from './styled';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
